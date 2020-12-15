@@ -55,12 +55,6 @@ def main(argv):
         estacaoAno = estacao(data)
         tIdeal = tempIdeal(estacaoAno)
 
-        #print('New -> temp = '+ str(temperatura.c))
-        #print('Heat index '+ str(hi.c))
-        print(data.strftime("%Y-%m-%d %H:%M:%S"))
-        #print(str(tIdeal))
-
-
         diffTemp = tIdeal - hi.c
         if diffTemp > 0:
             r = 'airconditioning+{'+ str(diffTemp) +'}'
@@ -68,7 +62,6 @@ def main(argv):
             r = 'airconditioning{'+ str(diffTemp) +'}'
 
         linha = [estacaoAno,str(tIdeal),r]
-        print(linha)
         csv_output.writerow(linha)
         c+=1
     print('Total de linhas tratadas: ' + str(c))
