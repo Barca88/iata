@@ -42,7 +42,7 @@ def main(argv):
 
     print('Total de linhas lidas '+ str(c))
     print('Total de linhas escritas no '+ output1 + ' ' + str(c1))
-    print('Total de linhas escritas no Output2 '+ output2 + ' ' + str(c2))
+    print('Total de linhas escritas no '+ output2 + ' ' + str(c2))
 
 if __name__ == "__main__":
     main(sys.argv[1:])
