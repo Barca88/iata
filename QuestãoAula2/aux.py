@@ -44,11 +44,28 @@ def main(argv):
 
 #betweeness centralidade (quantifica quantas vezes um nodo aparece nos caminhos mais curtos entre dois nodos)
     print(nx.betweenness_centrality(graf))
-
     
-    nx.spring_layout(graf)
-    nx.draw_networkx(graf)
+    elarge = [(u, v) for (u, v, d) in graf.edges(data=True) if d['weight'] > 3]
+    esmall = [(u, v) for (u, v, d) in graf.edges(data=True) if d['weight'] <= 3]
+#
+    pos = nx.circular_layout(graf)  # posições para todos os nodos
+#
+# # nodos
+    nx.draw_networkx_nodes(graf, pos, node_size=70)
+#
+# # arestas
+    nx.draw_networkx_edges(graf, pos, edgelist=elarge,width=0.5)
+    nx.draw_networkx_edges(graf, pos, edgelist=esmall,width=0.5, alpha=0.5, edge_color='b', style='dashed')
+#
+# # labels
+    nx.draw_networkx_labels(graf, pos, font_size=6, font_family='sans-serif')
+#
+    plt.axis('off')
     plt.show()
+    
+    #nx.spring_layout(graf)
+    #nx.draw_networkx(graf)
+    #plt.show()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
